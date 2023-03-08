@@ -3,7 +3,8 @@
  * Fastify Server
  */
 const fastify = require('fastify')({ logger: true });
-const fenv = require('@fastify/env');
+
+// const chalk = require('chalk');
 let secret = '';
 let port = 0;
 
@@ -29,54 +30,39 @@ fastify.register(require('@fastify/swagger-ui'), {
 // #endregion ---end swagger ---
 
 // Plugins
+//-----------------
+// fastify error logging plugin
 fastify.register(require('fastify-boom'));
+// fastify encrypt plugin
 fastify.register(require('fastify-bcrypt'));
-
 // fastify env plugin (fenv)
-const fenvOptions = {
-	confKey: 'config',
-	schema: {
-		type: 'object',
-		required: ['PORT', 'JWT_SECRET'],
-		properties: {
-			PORT: {
-				type: 'number',
-				default: 3000
-			},
-			JWT_SECRET: {
-				type: 'string',
-				default: '********',
-			}
-		}
-	},
-	data: process.env,
-	dotenv: true,
-	removeAdditional: true
-};
-
-fastify.register(fenv, fenvOptions).ready((err)=> {
+fastify.register(require('./plugins/fenv')).ready((err) => {
 	if (err) console.log(err);
 	secret = fastify.config.JWT_SECRET;
 	port = fastify.config.PORT;
 });
 
-// register the jwt plugin for authentication (note: changing servers might not retain old tokens if using a different secret key)
-const jwtOptions = {
-	secret: secret || 'mysecretstring'
-};
+// fastify jwt plugin for authentication (note: changing servers might not retain old tokens if using a different secret key)
+fastify.register(require('@fastify/jwt'), { secret: secret || 'mysecretstring' });
 
-fastify.register(require('@fastify/jwt'), jwtOptions);
+// fastify cors plugin
+fastify.register(require('@fastify/cors'), { origin: '*' });
+
+// fastify sqlite3 plugin
+fastify.register(require('./plugins/sqlite3'));
+// fastify knex plugin
+fastify.register(require('./plugins/knex'));
 
 // Decorators (Middleware)
-fastify.register(require('./middleware/auth_middleware'));
+//-----------------
+fastify.register(require('./plugins/auth_middleware'));
 
 // Hooks and Routes
-
-// register the routes
+//-----------------
 fastify.register(require('./routes/items'));
 fastify.register(require('./routes/auth'));
 
-
+// START the server
 const start = async () => {
 	try {
 		await fastify.listen({ port: port || 5000 });

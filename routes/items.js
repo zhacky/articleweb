@@ -136,7 +136,7 @@ const updateItemOpts = {
 function itemRoutes(fastify, options, done) {
 
 	// Get all items
-	fastify.get('/items', { ...getItemsOpts, preValidation: [fastify.jwtauthentication] });
+	fastify.get('/items', { ...getItemsOpts, preValidation: [fastify.jwtauthentication],preHandler: fastify.allitems });
 	done();
 
 	// Get single items
@@ -144,7 +144,7 @@ function itemRoutes(fastify, options, done) {
 	done();
 
 	// Add item
-	fastify.post('/items', postItemOpts);
+	fastify.post('/items', {...postItemOpts, preHandler: fastify.additem});
 	done();
 
 	// Delete item
