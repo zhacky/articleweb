@@ -27,6 +27,18 @@ function authRoutes(fastify, options, done) {
 
 
 	});
+
+	fastify.post('/register', (req, reply) => {
+		const user = req.body;
+		if(!user){
+			reply.code(500).send({message: 'User details invalid...'});
+		}
+		// Enter into database
+
+		// return a token
+		const token = fastify.jwt.sign({user: user.name, expiresIn: 86400});
+		reply.code(200).send({token, user });
+	});
 	done();
 }
 

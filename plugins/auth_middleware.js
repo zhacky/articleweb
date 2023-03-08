@@ -19,5 +19,6 @@ const authDecorator = async (fastify)=> {
 	});
 };
 
+
 module.exports = fp(authDecorator);
 

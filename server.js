@@ -59,7 +59,8 @@ fastify.register(require('./plugins/auth_middleware'));
 
 // Hooks and Routes
 //-----------------
-fastify.register(require('./routes/items'));
+fastify.register(require('./routes/articles'));
+fastify.register(require('./routes/users'));
 fastify.register(require('./routes/auth'));
 
 // START the server
