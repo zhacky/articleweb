@@ -4,38 +4,60 @@
 
 ### Get all users
 GET http://localhost:5000/users HTTP/1.1
+# Uncomment below to test JWT auth
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiemhhY2t5NiIsImV4cGlyZXNJbiI6MzE1MzYwMDAsImlhdCI6MTY3ODI3Njg3Mn0.iBNn1iivQaKSBoimk1FlouNw9m5KCubR1oLZorhQN8w
 
 ### Get single user
-GET http://localhost:5000/users/1 HTTP/1.1
+GET http://localhost:5000/users/2 HTTP/1.1
 
 ### Add a user
 POST http://localhost:5000/users HTTP/1.1
 Content-Type: application/json
 
 {
-		"name": "zhacky5",
-		"email": "me@zhacky5.com",
+		"name": "zhacky6",
+		"email": "me@zhacky6.com",
 		"phone": "1234567890",
 		"password": "password"
 }
 
 ### Update a user
-PUT http://localhost:5000/users/1 HTTP/1.1
+PUT http://localhost:5000/users/4 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiemhhY2t5NiIsImV4cGlyZXNJbiI6MzE1MzYwMDAsImlhdCI6MTY3ODI3Njg3Mn0.iBNn1iivQaKSBoimk1FlouNw9m5KCubR1oLZorhQN8w
 Content-Type: application/json
-{
-    "name": "updated demo name"
-}
-### Delete a user
-DELETE http://localhost:5000/users/1 HTTP/1.1
 
+{
+	"id":100,
+    "name": "zhacky4",
+	"email": "me@zhacky4.com",
+	"phone": "123142354",
+	"password": "password"
+
+}
+
+### Delete a user
+DELETE http://localhost:5000/users/114 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiemhhY2t5NiIsImV4cGlyZXNJbiI6MzE1MzYwMDAsImlhdCI6MTY3ODI3Njg3Mn0.iBNn1iivQaKSBoimk1FlouNw9m5KCubR1oLZorhQN8w
 
 ### Authentication calls
 
-### GET TOKEN
+### LOGIN AND GET A TOKEN
 POST http://localhost:5000/login HTTP/1.1
 Content-Type: application/json
+
 {
-		 	"username": "zhack",
-		 	"email": "me@zhacky.com"
+		 	"email": "me@zhacky2.com",
+		 	"password": "password"
+   
+}
+### REGISTER A USER AND GET A TOKEN
+POST http://localhost:5000/register HTTP/1.1
+Content-Type: application/json
+
+{
+		 	"name": "zhacky7",
+		 	"email": "me@zhacky7.com",
+			"phone": "1231234",
+		 	"password": "password"
    
 }

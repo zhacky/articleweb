@@ -34,7 +34,7 @@ fastify.register(require('@fastify/swagger-ui'), {
 // fastify error logging plugin
 fastify.register(require('fastify-boom'));
 // fastify encrypt plugin
-fastify.register(require('fastify-bcrypt'));
+fastify.register(require('fastify-bcrypt'),{ saltWorkFactor: 10});
 // fastify env plugin (fenv)
 fastify.register(require('./plugins/fenv')).ready((err) => {
 	if (err) console.log(err);
@@ -61,7 +61,6 @@ fastify.register(require('./plugins/auth_middleware'));
 //-----------------
 fastify.register(require('./routes/articles'));
 fastify.register(require('./routes/users'));
-fastify.register(require('./routes/auth'));
 
 // START the server
 const start = async () => {

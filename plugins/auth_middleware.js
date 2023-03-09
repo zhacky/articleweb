@@ -13,6 +13,7 @@ const authDecorator = async (fastify)=> {
 			await req.jwtVerify();
 			console.log('authenticated.');
 			reply.code(200);
+			
 		} catch (err) {
 			reply.send(err);
 		}

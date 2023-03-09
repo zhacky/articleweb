@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server",
     "dev": "nodemon server",
-    "fix": "npx eslint \"controllers/*\" \"routes/*\" \"plugins/*\" --ext .js --fix"
+    "fix": "npx eslint \"migrations/*\" \"routes/*\" \"plugins/*\" --ext .js --fix"
   },
   "keywords": [],
   "author": "",

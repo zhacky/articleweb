@@ -1,3 +1,8 @@
+/**
+ * Author: Zhack Ariya
+ * Configuration for .env
+ */
+
 const fp = require('fastify-plugin');
 const fenv = require('@fastify/env');
 
@@ -19,6 +24,10 @@ const fastifyEnv = async (fastify) => {
 				SQLITEPATH: {
 					type: 'string',
 					default: './articleweb.db3'
+				},
+				JWT_ACTIVATE: {
+					type: 'boolean',
+					default: true
 				}
 			}
 		},

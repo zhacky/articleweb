@@ -3,29 +3,34 @@
 
 ### GET ALL ARTICLES
 GET http://localhost:5000/articles HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiemhhY2t5NiIsImV4cGlyZXNJbiI6MzE1MzYwMDAsImlhdCI6MTY3ODI3Njg3Mn0.iBNn1iivQaKSBoimk1FlouNw9m5KCubR1oLZorhQN8w
 
 ### GET SINGLE ARTICLE
-GET http://localhost:5000/articles/1 HTTP/1.1
+GET http://localhost:5000/articles/2 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiemhhY2t5NiIsImV4cGlyZXNJbiI6MzE1MzYwMDAsImlhdCI6MTY3ODI3Njg3Mn0.iBNn1iivQaKSBoimk1FlouNw9m5KCubR1oLZorhQN8w
 
 ### ADD ARTICLE
 POST http://localhost:5000/articles HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiemhhY2t5NiIsImV4cGlyZXNJbiI6MzE1MzYwMDAsImlhdCI6MTY3ODI3Njg3Mn0.iBNn1iivQaKSBoimk1FlouNw9m5KCubR1oLZorhQN8w
 Content-Type: application/json
 
 {
-    "title": "New article from knex 6",
-    "summary": "This is the summary of the article 6",
-    "content": "This is an example query, it might go wrong 6"
+    "title": "New article from knex 8",
+    "summary": "This is the summary of the article 8",
+    "content": "This is an example query, it might go wrong8 "
 }
 
 ### DELETE ARTICLE
-DELETE http://localhost:5000/articles/1 HTTP/1.1
+DELETE http://localhost:5000/articles/8 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiemhhY2t5NiIsImV4cGlyZXNJbiI6MzE1MzYwMDAsImlhdCI6MTY3ODI3Njg3Mn0.iBNn1iivQaKSBoimk1FlouNw9m5KCubR1oLZorhQN8w
 
 ### UPDATE ARTICLE
-PUT http://localhost:5000/articles/2 HTTP/1.1
+PUT http://localhost:5000/articles/7 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiemhhY2t5NiIsImV4cGlyZXNJbiI6MzE1MzYwMDAsImlhdCI6MTY3ODI3Njg3Mn0.iBNn1iivQaKSBoimk1FlouNw9m5KCubR1oLZorhQN8w
 Content-Type: application/json
 
 {
-    "title": "Updated Article"
+    "title": "Updated Article again."
 }
 
 
